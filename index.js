@@ -11,7 +11,7 @@ const app = express();
 
 // Use CORS middleware
 app.use(cors({
-    origin: 'https://xeno-frontend-liard.vercel.app/',  // Allow requests from frontend
+    origin: '*',  // Allow requests from frontend
     methods: 'GET, POST, PUT, DELETE',
     credentials: true
 }));
