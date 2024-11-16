@@ -1,4 +1,3 @@
-// backend/routes/authRoutes.js
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
@@ -7,7 +6,7 @@ const User = require('../models/User'); // Import User model
 const router = express.Router();
 
 // Google OAuth client setup
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID); // Make sure to set your Google Client ID in .env
+const client = new OAuth2Client('512414783784-34hoe7s2p0nnt3p9kkpcls7iqjrc534v.apps.googleusercontent.com'); // Hardcoded Google Client ID
 
 // Signup Route (Storing Password as Plaintext)
 router.post('/signup', async (req, res) => {
@@ -41,7 +40,7 @@ router.post('/google-signin', async (req, res) => {
     try {
         const ticket = await client.verifyIdToken({
             idToken: tokenId,
-            audience: process.env.GOOGLE_CLIENT_ID,
+            audience: '512414783784-34hoe7s2p0nnt3p9kkpcls7iqjrc534v.apps.googleusercontent.com', // Hardcoded Google Client ID
         });
 
         const { email } = ticket.getPayload();
@@ -54,7 +53,7 @@ router.post('/google-signin', async (req, res) => {
         }
 
         // Generate JWT token for Google login
-        const token = jwt.sign({ userId: user._id }, 'your_jwt_secret', { expiresIn: '1h' });
+        const token = jwt.sign({ userId: user._id }, '704337e37f0d200f2cb37b2ad4d328d9610d96c52fe7ea3665d74dd90133e9517281b00eb6ffe51c7d570989da6d9d7ac95661155e8734d29ac26bc834d9ed42', { expiresIn: '1h' });
 
         res.json({ message: 'Google sign-in successful', token });
     } catch (error) {
@@ -63,7 +62,7 @@ router.post('/google-signin', async (req, res) => {
     }
 });
 
-// authRoutes.js
+// Login Route
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -82,7 +81,7 @@ router.post('/login', async (req, res) => {
         }
 
         // Generate JWT token
-        const token = jwt.sign({ userId: user._id }, 'your_jwt_secret', { expiresIn: '1h' });
+        const token = jwt.sign({ userId: user._id }, '704337e37f0d200f2cb37b2ad4d328d9610d96c52fe7ea3665d74dd90133e9517281b00eb6ffe51c7d570989da6d9d7ac95661155e8734d29ac26bc834d9ed42', { expiresIn: '1h' });
 
         // Send the token and user data (email) in response
         return res.json({
@@ -95,6 +94,5 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ message: 'Error logging in', error: err });
     }
 });
-
 
 module.exports = router;
