@@ -24,7 +24,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-        mongoUrl: 'mongodb+srv://manojbhaskarmvs2021:qPbo5rS3oRRweiwe@xenobackend.ld71e.mongodb.net/?retryWrites=true&w=majority&appName=xenoBackend'
+        mongoUrl: 'mongodb+srv://manojbhaskarmvs2021:qPbo5rS3oRRweiwe@xenobackend.ld71e.mongodb.net/?retryWrites=true&w=majority&appName=xenoBackend&ssl=true'
     }),
     cookie: {
         secure: process.env.NODE_ENV === 'production',
@@ -34,7 +34,7 @@ app.use(session({
 }));
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://manojbhaskarmvs2021:qPbo5rS3oRRweiwe@xenobackend.ld71e.mongodb.net/?retryWrites=true&w=majority&appName=xenoBackend', {
+mongoose.connect('mongodb+srv://manojbhaskarmvs2021:qPbo5rS3oRRweiwe@xenobackend.ld71e.mongodb.net/?retryWrites=true&w=majority&appName=xenoBackend&ssl=true', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
