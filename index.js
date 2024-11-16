@@ -34,7 +34,7 @@ app.use(session({
 }));
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://manojbhaskarmvs2021:qPbo5rS3oRRweiwe@xenobackend.ld71e.mongodb.net/?retryWrites=true&w=majority&appName=xenoBackend', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.on('connected', () => console.log('MongoDB connected successfully.'));
 mongoose.connection.on('error', (err) => console.log('MongoDB connection error:', err));
 mongoose.connection.on('disconnected', () => console.log('MongoDB disconnected.'));
