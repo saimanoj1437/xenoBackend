@@ -11,7 +11,7 @@ const app = express();
 
 // Use CORS middleware
 app.use(cors({
-    origin: 'http://localhost:3000',  // Allow requests from frontend
+    origin: 'https://xeno-frontend-liard.vercel.app/',  // Allow requests from frontend
     methods: 'GET, POST, PUT, DELETE',
     credentials: true
 }));
@@ -24,7 +24,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-        mongoUrl: 'mongodb+srv://manojbhaskarmvs2021:qPbo5rS3oRRweiwe@xenobackend.ld71e.mongodb.net/?retryWrites=true&w=majority&appName=xenoBackend&ssl=true'
+        mongoUrl: 'mongodb+srv://manojbhaskarmvs2021:qPbo5rS3oRRweiwe@xenobackend.ld71e.mongodb.net/?retryWrites=true&w=majority&appName=xenoBackend'
     }),
     cookie: {
         secure: process.env.NODE_ENV === 'production',
@@ -34,7 +34,7 @@ app.use(session({
 }));
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://manojbhaskarmvs2021:qPbo5rS3oRRweiwe@xenobackend.ld71e.mongodb.net/?retryWrites=true&w=majority&appName=xenoBackend&ssl=true', {
+mongoose.connect('mongodb+srv://manojbhaskarmvs2021:qPbo5rS3oRRweiwe@xenobackend.ld71e.mongodb.net/?retryWrites=true&w=majority&appName=xenoBackend', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
