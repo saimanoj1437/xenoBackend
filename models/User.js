@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true }, // Plaintext password (not recommended in production)
+    password: { type: String, required: true },
 });
 
-// Define the comparePassword method on the schema
+
 userSchema.methods.comparePassword = function (candidatePassword) {
     return candidatePassword === this.password;
 };
