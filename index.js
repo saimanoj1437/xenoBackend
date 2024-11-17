@@ -3,19 +3,20 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const orderRoutes = require('./routes/order');
-const authRoutes = require('./routes/authRoutes'); 
-const audienceRoutes = require('./routes/customer'); 
+
+const authRoutes = require('./routes/authRoutes');
+const audienceRoutes = require('./routes/customer');
+
 const app = express();
 
 
 app.use(cors({
-    origin: '*',  
+    origin: '*',
     methods: 'GET, POST, PUT, DELETE',
     credentials: true
 }));
 
-app.use(express.json()); /
+app.use(express.json());
 
 
 app.use(session({
@@ -41,8 +42,9 @@ mongoose.connection.on('connected', () => console.log('MongoDB connected success
 mongoose.connection.on('error', (err) => console.log('MongoDB connection error:', err));
 mongoose.connection.on('disconnected', () => console.log('MongoDB disconnected.'));
 
-app.use('/api/orders', orderRoutes);
-app.use('/api/auth', authRoutes); 
+
+
+app.use('/api/auth', authRoutes);
 app.use('/api/audience', audienceRoutes);
 
 
