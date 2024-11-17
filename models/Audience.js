@@ -1,4 +1,3 @@
-// server/models/Audience.js
 const mongoose = require('mongoose');
 
 const AudienceSchema = new mongoose.Schema({
