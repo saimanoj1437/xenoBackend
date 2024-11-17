@@ -1,4 +1,3 @@
-// backend/routes/customerRoutes.js
 const express = require('express');
 const Customer = require('../models/Customer');
 const router = express.Router();
