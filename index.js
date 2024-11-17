@@ -10,14 +10,14 @@ const app = express();
 
 
 app.use(cors({
-    origin: '*',  // Allow requests from frontend
+    origin: '*',  
     methods: 'GET, POST, PUT, DELETE',
     credentials: true
 }));
 
 app.use(express.json()); /
 
-// Set up session middleware
+
 app.use(session({
     secret: '92fc674065e2f0ac4dd582b888364352800f5343a52f5993f736db1ee62c94fc1d7fc0a7b8c28eebfa6130a7b06496802d3f0064d80e51fdcacb56ee6502427b',
     resave: false,
