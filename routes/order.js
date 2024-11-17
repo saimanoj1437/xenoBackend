@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 const authenticate = require('../middleware/authMiddleware');
 
-// Create a new order
+
 router.post('/', authenticate, async (req, res) => {
     const { customerId, items, totalAmount } = req.body;
 
-    // Validation
+    
     if (!customerId || !items || !totalAmount) {
         return res.status(400).json({ error: 'Missing required fields: customerId, items, or totalAmount' });
     }
@@ -20,7 +20,7 @@ router.post('/', authenticate, async (req, res) => {
     }
 });
 
-// Get all orders (protected route, only for authenticated users)
+
 router.get('/', authenticate, async (req, res) => {
     try {
         const orders = await Order.find().populate('customerId', 'name'); // populate customer name
@@ -30,7 +30,7 @@ router.get('/', authenticate, async (req, res) => {
     }
 });
 
-// Get a specific order by ID
+
 router.get('/:id', authenticate, async (req, res) => {
     try {
         const order = await Order.findById(req.params.id).populate('customerId', 'name');
@@ -63,7 +63,7 @@ router.put('/:id', authenticate, async (req, res) => {
     }
 });
 
-// Delete an order by ID
+
 router.delete('/:id', authenticate, async (req, res) => {
     try {
         const deletedOrder = await Order.findByIdAndDelete(req.params.id);
